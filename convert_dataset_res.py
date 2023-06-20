@@ -4,16 +4,22 @@ import xml.etree.ElementTree as ET
 import glob
 
 # Set the paths for the input and output directories
-input_dir = "mixed_dataset_PNG1"
-output_dir = "mixed_dataset_PNG1_1280"
-input_resolution = (4056, 3040)  # Original resolution
+input_dir = "mixed_objects_v2"
+output_dir = "mixed_objects_v2_1280"
+#input_resolution = (4056, 3040)  # Original resolution
+#input_resolution = (3840, 2160)  # Original resolution
 output_resolution = (1280, 1280)  # Desired resolution
 
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
 img_files = glob.glob(os.path.join(input_dir, f'*'))
 
-print(img_files[0])
+tm_img = cv2.imread(img_files[0])
+
+
+print(tm_img.shape)
+sz = tm_img.shape
+input_resolution = (sz[1], sz[0])
 # Loop through each image file in the input directory
 for filename in img_files:
     if filename.endswith(".jpg") or filename.endswith(".PNG"):
