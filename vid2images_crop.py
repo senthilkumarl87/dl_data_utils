@@ -1,9 +1,9 @@
 
-TEST_VIDEO = "Bolt_Large_Road_Noon_9523.mp4"
+TEST_VIDEO = "video_20230617_183243.mp4"
 import cv2 
 import time
 cap = cv2.VideoCapture(TEST_VIDEO)
-img_out = "./vid_imgs_croped"
+img_out = "./out"
 
 IMG_SIZE = 1280
 
@@ -21,8 +21,8 @@ while(cap.isOpened()):
   if ret: 
     # resize image
     # resized = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
-    croped = frame[ ymin:ymax, xmin:xmax ]
-    cv2.imwrite(img_out+ f"/frame_0000{i}.PNG", croped)
+    # frame = frame[ ymin:ymax, xmin:xmax ]
+    cv2.imwrite(img_out+ f"/frame_0000{i}.PNG", frame)
     cap.set(cv2.CAP_PROP_POS_MSEC,(i*500))
     i = i +1
 
